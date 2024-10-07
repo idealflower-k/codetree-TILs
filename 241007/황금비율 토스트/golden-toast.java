@@ -39,7 +39,6 @@ public class Main {
 		for (Character data : list) {
 			System.out.print(data);
 		}
-
 	}
 
 	private static void left(ListIterator<Character> iter) {
@@ -58,15 +57,12 @@ public class Main {
 		if (iter.hasNext()) {
 			iter.next();
 			iter.remove();
-		} else {
-			iter.remove();
 		}
 	}
 
 	private static void position(ListIterator<Character> iter, Character data) {
 		if (iter.hasNext()) {
 			iter.add(data);
-			iter.next();
 		} else {
 			iter.add(data);
 		}
