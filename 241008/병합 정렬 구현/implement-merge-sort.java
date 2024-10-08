@@ -37,9 +37,9 @@ public class Main {
 	public static void merge(int low, int mid, int high) {
 		int i = low;
 		int j = mid + 1;
-		int k = low;
+		int k = 0;
 
-		int[] mergedArr = new int[size];
+		int[] mergedArr = new int[high - low + 1];
 		while (i <= mid && j <= high) {
 			if (arr[i] <= arr[j]) {
 				mergedArr[k++] = arr[i++];
@@ -56,8 +56,9 @@ public class Main {
 			mergedArr[k++] = arr[j++];
 		}
 
+        int idx2 = 0;
 		for (int idx = low; idx <= high; idx++) {
-			arr[idx] = mergedArr[idx];
+			arr[idx] = mergedArr[idx2++];
 		}
 	}
 }
