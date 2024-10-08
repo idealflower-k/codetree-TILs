@@ -34,31 +34,28 @@ public class Main {
 		}
 	}
 
-	public static void merge(int low, int mid, int high) {
-		int i = low;
-		int j = mid + 1;
-		int k = 0;
+    public static void merge(int low, int mid, int high) {
+        int i = 0;
+        int j = 0;
+        int k = 0;
 
-		int[] mergedArr = new int[high - low + 1];
-		while (i <= mid && j <= high) {
-			if (arr[i] <= arr[j]) {
-				mergedArr[k++] = arr[i++];
-			} else {
-				mergedArr[k++] = arr[j++];
-			}
-		}
+        int[] leftArr = Arrays.copyOfRange(arr, low, mid + 1);
+        int[] rightArr = Arrays.copyOfRange(arr, mid + 1, high + 1);
 
-		while (i <= mid) {
-			mergedArr[k++] = arr[i++];
-		}
+        while (i < leftArr.length && j < rightArr.length) {
+            if (leftArr[i] <= rightArr[j]) {
+                arr[low + k++] = leftArr[i++];
+            } else {
+                arr[low + k++] = rightArr[j++];
+            }
+        }
 
-		while (j <= high) {
-			mergedArr[k++] = arr[j++];
-		}
+        while (i < leftArr.length) {
+            arr[low + k++] = leftArr[i++];
+        }
 
-        int idx2 = 0;
-		for (int idx = low; idx <= high; idx++) {
-			arr[idx] = mergedArr[idx2++];
-		}
-	}
+        while (j < rightArr.length) {
+            arr[low + k++] = rightArr[j++];
+        }
+    }
 }
